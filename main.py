@@ -30,6 +30,12 @@ def num_handling(lower, upper, float_bool):
                 continue
         return number
 
+def average(num_list):
+    total = 0
+    for number in num_list:
+        total += number
+    return total / len(num_list)
+
 type("Welcome to your very own GPA Calculator!\n", True)
 
 type("How many classes do you have semester 1?: ", False)
@@ -51,8 +57,20 @@ for num in range(1, sem2num + 1):
     sem2.append(num_handling(0.0, 4.0, True))
 
 grades = sem1 + sem2
-gpa = 0
-for grade in grades:
-    gpa += grade
-gpa /= len(grades)
+gpa = average(grades)
+sem1gpa = average(sem1)
+sem2gpa = average(sem2)
+
 type(f"You're total grade point average is {gpa}", True)
+
+type("Would you like to know your specific gpa for semester 1 or 2? [1/2] ", False)
+answer = input("")
+while answer != "1" and answer != "2":
+    type("I'm sorry but that wasn't an option. What's your real answer? ", False)
+    answer = input("")
+
+match answer:
+    case "1":
+        type(f"Your gpa for semester 1 is {sem1gpa}", True)
+    case "2":
+        type(f"Your gpa for semester 2 is {sem2gpa}", True)
